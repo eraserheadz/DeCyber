@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>DeCyber</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="game-container">
+        <div class="hud">
+            <div class="fighter-stats player-stats">
+                <div class="name">YOU</div>
+                <div class="health-bar-container"><div class="health-fill" id="player-health"></div></div>
+            </div>
+            <div class="hud-center">
+                <div class="versus-label" aria-hidden="true">VS</div>
+                <div class="timer" id="timer">VS</div>
+            </div>
+            <div class="fighter-stats enemy-stats">
+                <div class="name" id="enemy-name">CYBER THREAT</div>
+                <div class="health-bar-container"><div class="health-fill" id="enemy-health"></div></div>
+            </div>
+        </div>
+
+        <div class="stage">
+            <div class="fighter player-fighter">
+                <div id="player-sprite" class="sprite sprite-player is-idle" role="img" aria-label="Player"></div>
+            </div>
+            <div class="fighter enemy-fighter">
+                <div id="enemy-sprite" class="sprite sprite-enemy is-idle" role="img" aria-label="Enemy"></div>
+            </div>
+        </div>
+
+        <div class="quiz-interface">
+            <div class="question-box"><p id="question-text">Choose Campaign to begin.</p></div>
+            <div class="answers-grid" id="answers-container"></div>
+        </div>
+
+        <div id="overlay" class="overlay hidden">
+            <div class="menu-panel">
+                <h2 id="overlay-title">DECYBER</h2>
+                <p id="overlay-message" class="menu-message">Ready for another round?</p>
+                <div id="stats-board" class="stats-board hidden">
+                    <div class="stats-row"><span>Correct answers:</span><span id="stat-correct">0</span></div>
+                    <div class="stats-row"><span>Incorrect answers:</span><span id="stat-incorrect">0</span></div>
+                    <div class="stats-row"><span>Time:</span><span id="stat-time">0s</span></div>
+                </div>
+                <div class="end-buttons">
+    <button id="restart-button" class="menu-button" type="button">PLAY AGAIN</button>
+    <button id="main-menu-button" class="menu-button" type="button">MAIN MENU</button>
+</div>
+            </div>
+        </div>
+    </div>
+
+    <main id="campaign-menu-overlay" class="menu-scene" aria-label="DeCyber main menu">
+        <section class="menu-layout">
+            <header class="title-block">
+                <h1 class="game-title">DeCyber</h1>
+            </header>
+
+            <nav class="main-menu" aria-label="Game mode selection">
+                <button class="menu-item is-selected" type="button" data-index="0" data-action="campaign">
+                    <span class="menu-label">Campaign</span>
+                </button>
+
+            <button class="menu-item" type="button" data-index="1" data-action="endless">
+                    <span class="menu-label">Endless</span>
+                </button>
+
+            <button class="menu-item" type="button" data-index="2" data-action="settings">
+                    <span class="menu-label">Settings</span>
+                </button>
+            </nav>
+        </section>
+
+        <section class="difficulty-selection-panel hidden" aria-hidden="true" aria-labelledby="difficulty-selection-title" role="dialog">
+            <div class="options-card">
+                <h2 id="difficulty-selection-title">Select Difficulty</h2>
+
+                <nav class="main-menu" aria-label="Difficulty selection">
+                    <button class="menu-item difficulty-item is-selected" type="button" data-difficulty="1">
+                        <span class="menu-label">Intermediate</span>
+                    </button>
+
+                    <button class="menu-item difficulty-item" type="button" data-difficulty="2">
+                        <span class="menu-label">Advanced</span>
+                    </button>
+                </nav>
+
+                <button class="back-button" id="difficulty-back-button" type="button">Back</button>
+            </div>
+        </section>
+
+        <section class="settings-panel hidden" aria-hidden="true" aria-labelledby="settings-title" role="dialog">
+            <div class="options-card">
+                <h2 id="settings-title">Settings</h2>
+                <div class="settings-content">
+                    <div class="setting-row">
+                        <label for="bgm-volume">BGM Volume</label>
+                        <input type="range" id="bgm-volume" class="volume-slider" min="0" max="1" step="0.01" value="1">
+                    </div>
+                    <div class="setting-row">
+                        <label for="sfx-volume">SFX Volume</label>
+                        <input type="range" id="sfx-volume" class="volume-slider" min="0" max="1" step="0.01" value="1">
+                    </div>
+                    <div class="setting-row">
+                        <label for="menu-sfx-volume">Menu SFX Volume</label>
+                        <input type="range" id="menu-sfx-volume" class="volume-slider" min="0" max="1" step="0.01" value="1">
+                    </div>
+                </div>
+
+                <button class="back-button" id="settings-back-button" type="button">Back</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
